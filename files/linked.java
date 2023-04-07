@@ -165,17 +165,20 @@ public class linked {
     }
 
     public static void main(String[] args) {
-        linked sll  = new linked();
-        sll.head = new ListNode(10);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(8);
-        ListNode fourth = new ListNode(11);
+        linked sll1 = new linked();
+        sll1.insertLast(1);
+        sll1.insertLast(4);
+        sll1.insertLast(8);
 
-        // Now we will connect them together to form a chain
+        linked sll2 = new linked();
+        sll2.insertLast(3);
+        sll2.insertLast(5);
+        sll2.insertLast(8);
+        sll2.insertLast(9);
+        sll2.insertLast(14);
+        sll2.insertLast(18);
 
-        sll.head.next = second;
-        second.next = third;
-        third.next = fourth;
-        sll.display();
+        sll1.display();
+        sll2.display();
     }
 }
