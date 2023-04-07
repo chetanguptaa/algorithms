@@ -51,7 +51,7 @@ public class linked {
             ListNode previous = head;
             int count = 1;
 
-            while (count < position - 1) { // to understand
+            while (count < position - 1) { 
                 previous = previous.next;
                 count++;
             }
@@ -90,7 +90,7 @@ public class linked {
         } else {
             ListNode previous = head;
             int count = 1;
-            while (count < position - 1) { // to understand
+            while (count < position - 1) { 
                 previous = previous.next;
                 count++;
             }
@@ -141,7 +141,7 @@ public class linked {
         ListNode previous = null;
         ListNode next = null;
 
-        while(current != null ) { // to understand
+        while(current != null ) { 
             next = current.next;
             current.next = previous;
             previous = current;
@@ -154,7 +154,7 @@ public class linked {
         if(head == null) {
             return null;
         }
-        ListNode slowPtr = head; // to understand
+        ListNode slowPtr = head; 
         ListNode fastPtr = head;
 
         while (fastPtr != null && fastPtr.next != null) {
