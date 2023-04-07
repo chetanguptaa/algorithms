@@ -11,6 +11,15 @@ public class linked {
             this.next = null;
         }
     }
+
+    public void display() {
+        ListNode current = head;
+        while(current != null) {
+            System.out.println(current.data+ "-->");
+            current = current.next;
+        }
+        System.out.print("null");
+    }
     public static void main(String[] args) {
         linked sll  = new linked();
         sll.head = new ListNode(10);
@@ -23,5 +32,6 @@ public class linked {
         sll.head.next = second;
         second.next = third;
         third.next = fourth;
+        sll.display();
     }
 }
