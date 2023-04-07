@@ -1,5 +1,3 @@
-import java.time.Period;
-
 public class linked {
 
     private ListNode head;
