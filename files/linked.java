@@ -3,7 +3,7 @@ public class linked {
     private ListNode head;
 
     private static class ListNode {
-        private int data; //Generic type
+        private int data; // Generic type
         private ListNode next;
 
         public ListNode(int data) {
@@ -162,6 +162,72 @@ public class linked {
             fastPtr = fastPtr.next.next;
         }
         return slowPtr;
+    }
+
+    public ListNode getNthNodeFromEnd(int n) {
+        if(head == null) {
+            return null;                  
+        } 
+        if(n <= 0) {
+            throw new IllegalArgumentException("Invalid value: n = " + n);
+        }
+         
+        ListNode mainPtr = head;       // to understand
+        ListNode refPtr = head;
+
+        int count = 0;
+
+        while(count < n) {
+            if(refPtr == null) {
+                throw new IllegalArgumentException(n + " is greater than the number of nodes");
+            }
+            refPtr = refPtr.next;
+            count++;
+        }
+        while(refPtr != null) {
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+        return mainPtr;
+    }
+
+    public ListNode insertInSortedList(int value) {
+        ListNode newNode = new ListNode(value);
+
+        if(head == null) {
+            return newNode;
+        }
+        ListNode current = head;
+        ListNode temp = null;
+
+        while(current != null && current.data < newNode.data) {
+            temp = current;
+            current = current.next;
+        }
+        newNode.next = current;
+        temp.next = newNode;
+        return head;
+    }
+
+    public void deleteNode(int key) {
+        ListNode current = head;
+        ListNode temp = null;
+
+        if(current != null && current.data == key) {
+            head = current.next;
+            return;
+        }
+
+        if(current != null && current.data != key) {
+            temp = current;
+            current = current.next;
+        }
+
+        if(current == null ) {
+            return;
+        }
+
+        temp.next = current.next;
     }
 
     public static void main(String[] args) {
