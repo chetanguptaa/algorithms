@@ -172,7 +172,7 @@ public class linked {
             throw new IllegalArgumentException("Invalid value: n = " + n);
         }
          
-        ListNode mainPtr = head;       // to understand
+        ListNode mainPtr = head;       
         ListNode refPtr = head;
 
         int count = 0;
@@ -230,6 +230,90 @@ public class linked {
         temp.next = current.next;
     }
 
+    public boolean containsLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while(fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if(fastPtr == slowPtr) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ListNode startNodeInLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while(fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+            if(fastPtr == slowPtr) {
+                return getStartingNode(slowPtr);
+            }
+        }
+        return null;
+    }
+    private ListNode getStartingNode(ListNode slowPtr) {
+        ListNode temp = head;
+        while(temp != slowPtr) {
+            temp = temp.next;
+            slowPtr = slowPtr.next;
+        }
+        return temp;
+    }
+
+    public void removeLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+  
+        while (fastPtr != null && fastPtr.next != null) {
+           fastPtr = fastPtr.next.next;
+           slowPtr = slowPtr.next;
+  
+           if (fastPtr == slowPtr) {
+              removeLoop(slowPtr);
+              return;
+           }
+        }
+     }
+
+    private void removeLoop(ListNode slowPtr) {
+        ListNode temp = head;
+        while(temp.next != slowPtr.next) {
+            temp = temp.next;
+            slowPtr = slowPtr.next;
+        }
+        slowPtr.next = null;
+    }
+
+    public static ListNode merge(ListNode a, ListNode b) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail  = dummy;
+
+        while(a != null && b != null) {
+            if(a.data <= b.data) {
+                tail.next = a;
+                a = a.next;
+            } else {
+                tail.next = b;
+                b = b.next;
+            }
+            tail = tail.next;
+        }
+
+        if(a == null) {
+            tail.next = b;
+        } else {
+            tail.next = a;
+        }
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         linked sll1 = new linked();
         sll1.insertLast(1);
@@ -246,5 +330,10 @@ public class linked {
 
         sll1.display();
         sll2.display();
+
+        linked result = new linked();
+        result.head = merge(sll1.head, sll2.head);
+
+        result.display();
     }
 }
