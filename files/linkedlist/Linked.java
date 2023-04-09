@@ -1,3 +1,4 @@
+package linkedlist;
 public class Linked {
 
     private ListNode head;
