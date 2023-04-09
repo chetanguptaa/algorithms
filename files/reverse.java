@@ -1,4 +1,4 @@
-public class reverse {
+public class Reverse {
 
     public static void rev(int[] numbers, int start, int end) {
         while(start < end) {

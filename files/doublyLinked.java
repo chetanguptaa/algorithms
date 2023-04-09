@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class doublyLinked {
+public class DoublyLinked {
 
     private ListNode head;
     private ListNode tail;
@@ -16,7 +16,7 @@ public class doublyLinked {
         }
     }
 
-    public doublyLinked() {
+    public DoublyLinked() {
         this.head = null;     
         this.tail = null;
         this.length = 0;
@@ -108,7 +108,7 @@ public class doublyLinked {
     }
 
     public static void main(String[] args) {
-        doublyLinked dll = new doublyLinked();
+        DoublyLinked dll = new DoublyLinked();
         dll.insertEnd(1);
         dll.insertEnd(2);
         dll.insertEnd(5);

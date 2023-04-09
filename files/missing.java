@@ -1,4 +1,4 @@
-public class missing {
+public class Missing {
 
     public static void number(int[] arr) {
         int max = arr[0];

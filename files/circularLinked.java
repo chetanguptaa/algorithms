@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class circularLinked {
+public class CircularLinked {
 
     private ListNode last;
     private int length;
@@ -14,7 +14,7 @@ public class circularLinked {
         }
     }
     
-    public circularLinked() {
+    public CircularLinked() {
         last = null;
         length = 0;
     }
@@ -92,7 +92,7 @@ public class circularLinked {
     }
 
     public static void main(String[] args) {
-        circularLinked cll = new circularLinked();
+        CircularLinked cll = new CircularLinked();
         cll.createCircularLinkedList();
         cll.display();
     }

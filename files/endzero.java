@@ -1,4 +1,4 @@
-public class endzero {
+public class Endzero {
 
     public static void zero(int[] arr, int n){
         int j = 0;

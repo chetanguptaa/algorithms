@@ -1,4 +1,4 @@
-public class linked {
+public class Linked {
 
     private ListNode head;
 
@@ -315,12 +315,12 @@ public class linked {
     }
 
     public static void main(String[] args) {
-        linked sll1 = new linked();
+        Linked sll1 = new Linked();
         sll1.insertLast(1);
         sll1.insertLast(4);
         sll1.insertLast(8);
 
-        linked sll2 = new linked();
+        Linked sll2 = new Linked();
         sll2.insertLast(3);
         sll2.insertLast(5);
         sll2.insertLast(8);
@@ -331,7 +331,7 @@ public class linked {
         sll1.display();
         sll2.display();
 
-        linked result = new linked();
+        Linked result = new Linked();
         result.head = merge(sll1.head, sll2.head);
 
         result.display();

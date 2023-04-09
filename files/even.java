@@ -1,4 +1,4 @@
-public class even {
+public class Even {
     public static int[] removeEven(int[] arr) {
         int oddCount = 0;
         for (int i = 0; i < arr.length; i++) {

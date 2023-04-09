@@ -1,4 +1,4 @@
-public class mini {
+public class Mini {
 
     public static void minimum(int[] numbers) {
         int minimum = numbers[0];
