@@ -8,8 +8,6 @@ public class Trie {
 
     public class TrieNode {
         private TrieNode[] children;
-        private boolean isWord;
-
         public TrieNode() {
             this.children = new TrieNode[26]; // storing english words
         }
@@ -34,7 +32,6 @@ public class Trie {
                 current = current.children[index];
             }
         }
-        current.isWord = true;
     }
 
     public boolean search(String word) {
