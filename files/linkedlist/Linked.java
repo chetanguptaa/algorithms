@@ -3,7 +3,7 @@ public class Linked {
 
     private ListNode head;
 
-    private static class ListNode {
+    public static class ListNode {
         private int data; // Generic type
         private ListNode next;
 
@@ -98,6 +98,35 @@ public class Linked {
             ListNode current = previous.next;
             previous.next = current.next;
         }
+    }
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null || headB == null) return null;
+        ListNode a_pointer = headA;
+        ListNode b_pointer = headB;
+        while(a_pointer !=b_pointer) {
+            if(a_pointer == null) {
+                a_pointer = headB;
+            } else {
+                a_pointer = a_pointer.next;
+            }
+            if(b_pointer == null) {
+                b_pointer = headA;
+            } else {
+                b_pointer = b_pointer.next;
+            }
+        }
+        return a_pointer;
+    }
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode current = head;
+        while(current != null && current.next != null) {
+            if(current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        return head;
     }
 
     public ListNode deleteLast() {
@@ -314,7 +343,6 @@ public class Linked {
         }
         return dummy.next;
     }
-
     public static void main(String[] args) {
         Linked sll1 = new Linked();
         sll1.insertLast(1);
