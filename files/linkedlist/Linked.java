@@ -128,6 +128,16 @@ public class Linked {
         }
         return head;
     }
+    public boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow) return true;
+        }
+        return false;
+    }
 
     public ListNode deleteLast() {
         if (head == null) {

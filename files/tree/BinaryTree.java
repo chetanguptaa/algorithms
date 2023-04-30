@@ -6,12 +6,12 @@ import java.util.Queue;
 public class BinaryTree {
 
     private TreeNode root;
-    private class TreeNode {
+    private static class TreeNode {
         private TreeNode left;
         private TreeNode right;
-        private int data;
+        private final int data;
 
-        public TreeNode(int data) {
+        public TreeNode(Integer data) {
             this.data = data;
         }
     }
@@ -133,30 +133,31 @@ public class BinaryTree {
     }
 
     public int findMax(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return Integer.MIN_VALUE;
         }
         int result = root.data;
         int left = findMax(root.left);
         int right = findMax(root.right);
 
-        if(left > result) {
+        if (left > result) {
             result = left;
         }
-        if(right > result) {
+        if (right > result) {
             result = right;
         }
         return result;
     }
-
     public void createBinaryTree() {
-        TreeNode first = new TreeNode(1);
+        TreeNode first = new TreeNode(1); //[1,2,2,3,3,null,null,4,4]
         TreeNode second = new TreeNode(2);
-        TreeNode third = new TreeNode(3);
-        TreeNode fourth = new TreeNode(4);
-        TreeNode fifth = new TreeNode(5);
-        TreeNode sixth = new TreeNode(6);
-        TreeNode seventh = new TreeNode(7);
+        TreeNode third = new TreeNode(2);
+        TreeNode fourth = new TreeNode(3);
+        TreeNode fifth = new TreeNode(3);
+        TreeNode sixth = new TreeNode(null);
+        TreeNode seventh = new TreeNode(null);
+        TreeNode eighth = new TreeNode(4);
+        TreeNode ninth = new TreeNode(4);
 
         root = first;
         first.left = second;
@@ -165,10 +166,14 @@ public class BinaryTree {
         second.right = fifth;
         third.left = sixth;
         third.right = seventh;
+        fourth.left = eighth;
+        fourth.right = ninth;
+
     }
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
         bt.createBinaryTree();
         bt.postOrder();
+//        System.out.println(bt.isBalanced());
     }
 }
