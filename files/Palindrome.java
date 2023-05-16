@@ -1,4 +1,4 @@
-public class Palindrom {
+public class Palindrome {
 
     public static boolean isPalindrome(String word) {
         char[] charset = word.toCharArray();
