@@ -1,9 +1,11 @@
 package linkedlist;
+
 public class Linked {
 
     private ListNode head;
 
     public static class ListNode {
+        public ListNode Linked;
         private int data; // Generic type
         private ListNode next;
 
