@@ -206,11 +206,11 @@ public class GraphQuestions {
     }
     static int miniSizeInsland(char[][] edges) {
         HashSet<String> visited = new HashSet<>();
-        int size = 0;
+        int size = Integer.MAX_VALUE;
         for(int r = 0; r < edges.length; r++) {
             for(int c = 0; c < edges[0].length; c++) {
                 int tempSize = sizeExplorer(edges, r, c, visited);
-                if (tempSize > size) size = tempSize;
+                if (tempSize < size) size = tempSize;
             }
         }
         return size;
@@ -222,9 +222,12 @@ public class GraphQuestions {
         if ( edges[r][c] == 'W') return 0;
         String pos = String.valueOf(r + ',' + c);
         if(visited.contains(pos)) return 0;
-        visited.add(pos);
-        int min1 = Math.min(sizeExplorer(edges, r - 1, c, visited), sizeExplorer(edges, r + 1, c, visited));
-        int min2 = Math.min(sizeExplorer(edges, r, c + 1, visited), sizeExplorer(edges, r, c - 1, visited));
-        return Math.min(min1, min2);
+        int size = 1;
+        size += sizeExplorer(edges, r - 1, c, visited);
+        size += sizeExplorer(edges, r + 1, c, visited);
+        size += sizeExplorer(edges, r, c + 1, visited);
+        size += sizeExplorer(edges, r, c - 1, visited);
+        return size;
     }
+    
 }
