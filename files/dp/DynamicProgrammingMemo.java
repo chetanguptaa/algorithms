@@ -2,7 +2,7 @@ package dp;
 
 import java.util.*;
 
-public class DynamicProgramming {
+public class DynamicProgrammingMemo {
     public static void main(String[] args) {
 //        System.out.println(fibDp(5, new HashMap<>()));
 //        System.out.println(gridTravellerDp(18, 18, new HashMap<>()));
@@ -208,3 +208,4 @@ public class DynamicProgramming {
         return allWays;
     }
 }
+
