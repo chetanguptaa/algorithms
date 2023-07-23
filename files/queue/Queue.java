@@ -1,3 +1,5 @@
+package queue;
+
 import java.util.NoSuchElementException;
 
 public class Queue {
@@ -6,8 +8,8 @@ public class Queue {
     private ListNode rear;
     private int length;
 
-    private class ListNode {
-        private int data;
+    private static class ListNode {
+        private final int data;
         private ListNode next;
 
         public ListNode(int data) {
@@ -42,24 +44,18 @@ public class Queue {
         length++;
     }
 
-    public int dequeue() {
-        if(isEmpty()) {
-            throw new NoSuchElementException("Queue is already empty");
-        }
+    public void dequeue() {
+        if(isEmpty()) throw new NoSuchElementException("queue.Queue is already empty");
         int result = front.data;
         front = front.next;
         if(front == null) {
             rear = null;
         }
         length--;
-        return result;
     }
 
     public void print() {
-        if(isEmpty()) {
-            return;
-        }
-
+        if(isEmpty()) return;
         ListNode current = front;
         while(current != null) {
             System.out.print(current.data + " --> ");
@@ -74,12 +70,9 @@ public class Queue {
         queue.enqueue(10);
         queue.enqueue(7);
         queue.enqueue(21);
-
         queue.print();
-
         queue.dequeue();
         queue.dequeue();
-
         queue.print();
     }
 }

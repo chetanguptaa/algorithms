@@ -1,22 +1,20 @@
 import java.util.*;
 public class Leetcode {
     public static void main(String[] args) {
-        System.out.println(findMatrix(new int[] {1,3,4,1,2,3,1}));
+        System.out.println(maxSubarraySumCircular(new int[] {5,-3,5}));
     }
-    static List<List<Integer>> findMatrix(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
-        List<List<Integer>> ans = new ArrayList<>();
-        for(int i = 0; i < nums.length; i++) map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
-        while(!map.isEmpty()) {
-            List<Integer> temp = new ArrayList<>();
-            for (int i : map.keySet()) {
-                temp.add(i);
-                map.put(i, map.get(i) - 1);
-                if (map.get(i) == 0) map.remove(i);
+    static int maxSubarraySumCircular(int[] nums) {
+        int[] table = new int[nums.length];
+        table[0] = nums[0];
+        int max = nums[0];
+        for(int i = 1; i < nums.length; i++) {
+            if(i == nums.length - 1) {
+                table[(i + 1) % nums.length] = nums[(i + 1) % nums.length] + (nums[(i) % nums.length] > 0 ? nums[(i + 1) % nums.length] : 0);
             }
-            ans.add(temp);
+            table[i] = nums[i] + (nums[i - 1] > 0 ? nums[i] : 0);
+            max = Math.max(max, table[i]);
         }
-        return ans;
+        return max;
     }
 }
 
