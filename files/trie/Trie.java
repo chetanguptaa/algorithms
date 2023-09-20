@@ -1,49 +1,42 @@
+package trie;
+class TrieNode {
+    TrieNode[] children;
+    boolean isEndOfWord;
+    public TrieNode() {
+        children = new TrieNode[26];
+        isEndOfWord = false;
+    }
+}
+
 public class Trie {
-
-    private TrieNode root;
-
-    public Trie() {
-        root = new TrieNode();
-    }
-
-    public class TrieNode {
-        private TrieNode[] children;
-        public TrieNode() {
-            this.children = new TrieNode[26]; // storing english words
-        }
-    }
-
-    public void insert(String word) {
-        if(word == null || word.isEmpty()) {
-            throw new IllegalArgumentException("Invalid Input");
-        }
-
-        word = word.toLowerCase();
-
-        TrieNode current = root;
-        for(int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            int index = c - 'a';
-            if(current.children[index] == null) {
-                TrieNode node = new TrieNode();
-                current.children[index] = node;
-                current = node;
-            } else {
-                current = current.children[index];
-            }
-        }
-    }
-
-    public boolean search(String word) {
-        return false;
-    }
-
     public static void main(String[] args) {
-        Trie trie = new Trie();
-        trie.insert("cat");
-        trie.insert("cab");
-        trie.insert("son");
-        trie.insert("so");
-        System.out.println("Values inserted successfully !!!");    
+        TrieNode root = new TrieNode();
+        insert(root, "apple");
+        insert(root, "ball");
+        insert(root, "cat");
+        System.out.println(search(root, "dog"));
+    }
+
+    static void insert(TrieNode root, String key) {
+        TrieNode currNode = root;
+        for (int i = 0; i < key.length(); i++) {
+            char curr = key.charAt(i);
+            if (currNode.children[curr - 'a'] == null) {
+                TrieNode newNode = new TrieNode();
+                currNode.children[curr - 'a'] = newNode;
+            }
+            currNode = currNode.children[curr - 'a'];
+        }
+        currNode.isEndOfWord = true;
+    }
+
+    static boolean search(TrieNode root, String key) {
+        TrieNode currNode = root;
+        for (int i = 0; i < key.length(); i++) {
+            char curr = key.charAt(i);
+            if (currNode.children[curr - 'a'] == null) return false;
+            currNode = currNode.children[curr - 'a'];
+        }
+        return currNode.isEndOfWord;
     }
 }
