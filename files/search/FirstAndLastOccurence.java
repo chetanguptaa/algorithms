@@ -1,11 +1,8 @@
-import java.net.Inet4Address;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.HashMap;
+package search;
 
-public class Leetcode {
+public class FirstAndLastOccurence {
     public static void main(String[] args) {
-        System.out.println(lastOccurence(new int[] {1, 2, 2, 2, 3, 3, 4, 5, 6}, 3));
+        System.out.println(noOfCount(new int[] {1, 2, 2, 2, 3}, 2));
     }
     public static int firstOccurence(int[] nums, int target) {
         int start = 0, end = nums.length - 1;
@@ -37,6 +34,9 @@ public class Leetcode {
                 start = mid + 1;
             }
         }
-        return ans == Integer.MAX_VALUE ? -1 : ans;
+        return ans == Integer.MIN_VALUE ? -1 : ans;
+    }
+    private static int noOfCount(int[] nums, int target) {
+        return lastOccurence(nums, target) - firstOccurence(nums, target) + 1;
     }
 }

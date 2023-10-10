@@ -16,7 +16,6 @@ public class Trie {
         insert(root, "cat");
         System.out.println(search(root, "dog"));
     }
-
     static void insert(TrieNode root, String key) {
         TrieNode currNode = root;
         for (int i = 0; i < key.length(); i++) {
