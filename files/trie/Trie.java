@@ -1,7 +1,9 @@
 package trie;
+
 class TrieNode {
     TrieNode[] children;
     boolean isEndOfWord;
+
     public TrieNode() {
         children = new TrieNode[26];
         isEndOfWord = false;
@@ -16,6 +18,7 @@ public class Trie {
         insert(root, "cat");
         System.out.println(search(root, "dog"));
     }
+
     static void insert(TrieNode root, String key) {
         TrieNode currNode = root;
         for (int i = 0; i < key.length(); i++) {
@@ -33,7 +36,8 @@ public class Trie {
         TrieNode currNode = root;
         for (int i = 0; i < key.length(); i++) {
             char curr = key.charAt(i);
-            if (currNode.children[curr - 'a'] == null) return false;
+            if (currNode.children[curr - 'a'] == null)
+                return false;
             currNode = currNode.children[curr - 'a'];
         }
         return currNode.isEndOfWord;
