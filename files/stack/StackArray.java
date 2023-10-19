@@ -26,7 +26,7 @@ public class StackArray {
     }
 
     public void push(int data) {
-        if(isFull()) {
+        if (isFull()) {
             throw new RuntimeException("Stack is Full");
         }
         top++;
@@ -34,7 +34,7 @@ public class StackArray {
     }
 
     public int pop() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
         int result = arr[top];
@@ -43,7 +43,7 @@ public class StackArray {
     }
 
     public int peek() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
         return arr[top];

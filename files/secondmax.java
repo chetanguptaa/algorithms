@@ -11,8 +11,9 @@ public class Secondmax {
         }
         System.out.println(secondmax);
     }
+
     public static void main(String[] args) {
-        int[] numbers = {2,7,3,4,0,9,14,16,67};
+        int[] numbers = { 2, 7, 3, 4, 0, 9, 14, 16, 67 };
         max(numbers);
     }
 }

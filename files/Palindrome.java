@@ -4,7 +4,7 @@ public class Palindrome {
         char[] charset = word.toCharArray();
         int start = 0;
         int end = word.length() - 1;
-        while(start < end) {
+        while (start < end) {
             if (charset[start] != charset[end]) {
                 return false;
             }
@@ -13,6 +13,7 @@ public class Palindrome {
         }
         return true;
     }
+
     public static void main(String[] args) {
         String newWord = "abcbac";
         System.out.println(isPalindrome(newWord));

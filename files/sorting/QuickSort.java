@@ -8,6 +8,7 @@ public class QuickSort {
         quickSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
     }
+
     public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             int pivotIndex = partition(arr, low, high);
@@ -15,6 +16,7 @@ public class QuickSort {
             quickSort(arr, pivotIndex + 1, high);
         }
     }
+
     public static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;

@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 public class StackList {
     private ListNode top;
     private int length;
-    
+
     private class ListNode {
         private int data;
         private ListNode next;
@@ -37,7 +37,7 @@ public class StackList {
     }
 
     public int pop() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
         int result = top.data;
@@ -47,7 +47,7 @@ public class StackList {
     }
 
     public int peek() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
         return top.data;

@@ -1,7 +1,7 @@
 public class Reverse {
 
     public static void rev(int[] numbers, int start, int end) {
-        while(start < end) {
+        while (start < end) {
             int temp = numbers[start];
             numbers[start] = numbers[end];
             numbers[end] = temp;
@@ -15,8 +15,9 @@ public class Reverse {
             System.out.print(arr[i] + " ");
         }
     }
+
     public static void main(String[] args) {
-        int[] numbers = {2,3,4,5,6,7};
+        int[] numbers = { 2, 3, 4, 5, 6, 7 };
         printArray(numbers);
         rev(numbers, 0, numbers.length - 1);
         printArray(numbers);

@@ -1,4 +1,5 @@
 package linkedlist;
+
 import java.util.NoSuchElementException;
 
 public class CircularLinked {
@@ -14,7 +15,7 @@ public class CircularLinked {
             this.data = data;
         }
     }
-    
+
     public CircularLinked() {
         last = null;
         length = 0;
@@ -41,11 +42,11 @@ public class CircularLinked {
     }
 
     public void display() {
-        if(last == null) {
+        if (last == null) {
             return;
         }
         ListNode first = last.next;
-        while(first != last) {
+        while (first != last) {
             System.out.print(first.data + " --> ");
             first = first.next;
         }
@@ -54,7 +55,7 @@ public class CircularLinked {
 
     public void insertFirst(int data) {
         ListNode temp = new ListNode(data);
-        if(last == null) {
+        if (last == null) {
             last = temp;
         } else {
             temp.next = last.next;
@@ -65,7 +66,7 @@ public class CircularLinked {
 
     public void insertLast(int data) {
         ListNode temp = new ListNode(data);
-        if(last == null) {
+        if (last == null) {
             last = temp;
             last.next = last;
         } else {
@@ -77,12 +78,12 @@ public class CircularLinked {
     }
 
     public ListNode removeFirst() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException("Circular Single List is already empty");
         }
 
         ListNode temp = last.next;
-        if(last.next == last) {
+        if (last.next == last) {
             last = null;
         } else {
             last.next = temp.next;

@@ -17,8 +17,8 @@ public class Linked {
 
     public void display() {
         ListNode current = head;
-        while(current != null) {
-            System.out.println(current.data+ "-->");
+        while (current != null) {
+            System.out.println(current.data + "-->");
             current = current.next;
         }
         System.out.print("null");
@@ -28,16 +28,16 @@ public class Linked {
     public int length() {
         if (head == null) {
             return 0;
-        } 
+        }
         int count = 0;
         ListNode current = head;
-        while(current != null) {
+        while (current != null) {
             count++;
             current = current.next;
         }
         return count;
     }
- 
+
     public void insertFirst(int value) {
         ListNode node = new ListNode(value);
         node.next = head;
@@ -46,7 +46,7 @@ public class Linked {
 
     public void insert(int position, int value) {
         ListNode node = new ListNode(value);
-        
+
         if (position == 1) {
             node.next = head;
             head = node;
@@ -54,7 +54,7 @@ public class Linked {
             ListNode previous = head;
             int count = 1;
 
-            while (count < position - 1) { 
+            while (count < position - 1) {
                 previous = previous.next;
                 count++;
             }
@@ -66,12 +66,12 @@ public class Linked {
 
     public void insertLast(int value) {
         ListNode node = new ListNode(value);
-        if(head == null) {
+        if (head == null) {
             head = node;
             return;
         }
         ListNode current = head;
-        while(current.next != null) {
+        while (current.next != null) {
             current = current.next;
         }
         current.next = node;
@@ -88,12 +88,12 @@ public class Linked {
     }
 
     public void delete(int position) {
-        if(position == 1) {
+        if (position == 1) {
             head = head.next;
         } else {
             ListNode previous = head;
             int count = 1;
-            while (count < position - 1) { 
+            while (count < position - 1) {
                 previous = previous.next;
                 count++;
             }
@@ -101,17 +101,19 @@ public class Linked {
             previous.next = current.next;
         }
     }
+
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if(headA == null || headB == null) return null;
+        if (headA == null || headB == null)
+            return null;
         ListNode a_pointer = headA;
         ListNode b_pointer = headB;
-        while(a_pointer !=b_pointer) {
-            if(a_pointer == null) {
+        while (a_pointer != b_pointer) {
+            if (a_pointer == null) {
                 a_pointer = headB;
             } else {
                 a_pointer = a_pointer.next;
             }
-            if(b_pointer == null) {
+            if (b_pointer == null) {
                 b_pointer = headA;
             } else {
                 b_pointer = b_pointer.next;
@@ -119,10 +121,11 @@ public class Linked {
         }
         return a_pointer;
     }
+
     public ListNode deleteDuplicates(ListNode head) {
         ListNode current = head;
-        while(current != null && current.next != null) {
-            if(current.data == current.next.data) {
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
                 current.next = current.next.next;
             } else {
                 current = current.next;
@@ -130,13 +133,15 @@ public class Linked {
         }
         return head;
     }
+
     public boolean hasCycle(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
-        while(fast != null) {
+        while (fast != null) {
             fast = fast.next.next;
             slow = slow.next;
-            if(fast == slow) return true;
+            if (fast == slow)
+                return true;
         }
         return false;
     }
@@ -151,8 +156,8 @@ public class Linked {
             return temp;
         }
         ListNode current = head;
-        ListNode  previous = null;
-        while (current.next != null ) {
+        ListNode previous = null;
+        while (current.next != null) {
             previous = current;
             current = current.next;
         }
@@ -166,24 +171,24 @@ public class Linked {
         }
 
         ListNode current = head;
-        while(current.data == searchKey) {
-            if(current.data == searchKey) {
+        while (current.data == searchKey) {
+            if (current.data == searchKey) {
                 return true;
             }
             current = current.next;
         }
         return false;
     }
-    
+
     public ListNode reverse() {
-        if(head == null) {
+        if (head == null) {
             return null;
         }
         ListNode current = head;
         ListNode previous = null;
         ListNode next = null;
 
-        while(current != null ) { 
+        while (current != null) {
             next = current.next;
             current.next = previous;
             previous = current;
@@ -193,10 +198,10 @@ public class Linked {
     }
 
     public ListNode getMiddleNode() {
-        if(head == null) {
+        if (head == null) {
             return null;
         }
-        ListNode slowPtr = head; 
+        ListNode slowPtr = head;
         ListNode fastPtr = head;
 
         while (fastPtr != null && fastPtr.next != null) {
@@ -207,26 +212,26 @@ public class Linked {
     }
 
     public ListNode getNthNodeFromEnd(int n) {
-        if(head == null) {
-            return null;                  
-        } 
-        if(n <= 0) {
+        if (head == null) {
+            return null;
+        }
+        if (n <= 0) {
             throw new IllegalArgumentException("Invalid value: n = " + n);
         }
-         
-        ListNode mainPtr = head;       
+
+        ListNode mainPtr = head;
         ListNode refPtr = head;
 
         int count = 0;
 
-        while(count < n) {
-            if(refPtr == null) {
+        while (count < n) {
+            if (refPtr == null) {
                 throw new IllegalArgumentException(n + " is greater than the number of nodes");
             }
             refPtr = refPtr.next;
             count++;
         }
-        while(refPtr != null) {
+        while (refPtr != null) {
             refPtr = refPtr.next;
             mainPtr = mainPtr.next;
         }
@@ -236,13 +241,13 @@ public class Linked {
     public ListNode insertInSortedList(int value) {
         ListNode newNode = new ListNode(value);
 
-        if(head == null) {
+        if (head == null) {
             return newNode;
         }
         ListNode current = head;
         ListNode temp = null;
 
-        while(current != null && current.data < newNode.data) {
+        while (current != null && current.data < newNode.data) {
             temp = current;
             current = current.next;
         }
@@ -255,17 +260,17 @@ public class Linked {
         ListNode current = head;
         ListNode temp = null;
 
-        if(current != null && current.data == key) {
+        if (current != null && current.data == key) {
             head = current.next;
             return;
         }
 
-        if(current != null && current.data != key) {
+        if (current != null && current.data != key) {
             temp = current;
             current = current.next;
         }
 
-        if(current == null ) {
+        if (current == null) {
             return;
         }
 
@@ -276,11 +281,11 @@ public class Linked {
         ListNode fastPtr = head;
         ListNode slowPtr = head;
 
-        while(fastPtr != null && fastPtr.next != null) {
+        while (fastPtr != null && fastPtr.next != null) {
             fastPtr = fastPtr.next.next;
             slowPtr = slowPtr.next;
 
-            if(fastPtr == slowPtr) {
+            if (fastPtr == slowPtr) {
                 return true;
             }
         }
@@ -291,18 +296,19 @@ public class Linked {
         ListNode fastPtr = head;
         ListNode slowPtr = head;
 
-        while(fastPtr != null && fastPtr.next != null) {
+        while (fastPtr != null && fastPtr.next != null) {
             fastPtr = fastPtr.next.next;
             slowPtr = slowPtr.next;
-            if(fastPtr == slowPtr) {
+            if (fastPtr == slowPtr) {
                 return getStartingNode(slowPtr);
             }
         }
         return null;
     }
+
     private ListNode getStartingNode(ListNode slowPtr) {
         ListNode temp = head;
-        while(temp != slowPtr) {
+        while (temp != slowPtr) {
             temp = temp.next;
             slowPtr = slowPtr.next;
         }
@@ -312,21 +318,21 @@ public class Linked {
     public void removeLoop() {
         ListNode fastPtr = head;
         ListNode slowPtr = head;
-  
+
         while (fastPtr != null && fastPtr.next != null) {
-           fastPtr = fastPtr.next.next;
-           slowPtr = slowPtr.next;
-  
-           if (fastPtr == slowPtr) {
-              removeLoop(slowPtr);
-              return;
-           }
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if (fastPtr == slowPtr) {
+                removeLoop(slowPtr);
+                return;
+            }
         }
-     }
+    }
 
     private void removeLoop(ListNode slowPtr) {
         ListNode temp = head;
-        while(temp.next != slowPtr.next) {
+        while (temp.next != slowPtr.next) {
             temp = temp.next;
             slowPtr = slowPtr.next;
         }
@@ -335,10 +341,10 @@ public class Linked {
 
     public static ListNode merge(ListNode a, ListNode b) {
         ListNode dummy = new ListNode(0);
-        ListNode tail  = dummy;
+        ListNode tail = dummy;
 
-        while(a != null && b != null) {
-            if(a.data <= b.data) {
+        while (a != null && b != null) {
+            if (a.data <= b.data) {
                 tail.next = a;
                 a = a.next;
             } else {
@@ -348,13 +354,14 @@ public class Linked {
             tail = tail.next;
         }
 
-        if(a == null) {
+        if (a == null) {
             tail.next = b;
         } else {
             tail.next = a;
         }
         return dummy.next;
     }
+
     public static void main(String[] args) {
         Linked sll1 = new Linked();
         sll1.insertLast(1);

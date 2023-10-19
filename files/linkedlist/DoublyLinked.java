@@ -1,4 +1,5 @@
 package linkedlist;
+
 import java.util.NoSuchElementException;
 
 public class DoublyLinked {
@@ -18,21 +19,21 @@ public class DoublyLinked {
     }
 
     public DoublyLinked() {
-        this.head = null;     
+        this.head = null;
         this.tail = null;
         this.length = 0;
-    } 
+    }
 
     public boolean isEmpty() {
         return length == 0;
     }
 
     public void displayForward() {
-        if(head == null) {
+        if (head == null) {
             return;
         }
         ListNode temp = head;
-        while(temp != null) {
+        while (temp != null) {
             System.out.print(temp.data + " --> ");
             temp = temp.next;
         }
@@ -40,21 +41,21 @@ public class DoublyLinked {
     }
 
     public void displayBackward() {
-        if(head  == null) {
+        if (head == null) {
             return;
         }
 
         ListNode temp = tail;
-        while(temp != null) {
+        while (temp != null) {
             System.out.print(temp.data + " --> ");
-            temp  = temp.prev;
+            temp = temp.prev;
         }
         System.out.println("null");
     }
 
     public void insertFirst(int value) {
         ListNode newNode = new ListNode(value);
-        if(isEmpty()) {
+        if (isEmpty()) {
             tail = newNode;
         } else {
             head.prev = newNode;
@@ -66,7 +67,7 @@ public class DoublyLinked {
 
     public void insertEnd(int value) {
         ListNode newNode = new ListNode(value);
-        if(isEmpty()) {
+        if (isEmpty()) {
             head = newNode;
         } else {
             tail.next = newNode;
@@ -77,27 +78,27 @@ public class DoublyLinked {
     }
 
     public ListNode deleteFirst() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
         }
         ListNode temp = head;
-        if(head == tail) {
+        if (head == tail) {
             tail = null;
         } else {
-            head.next.prev  = null;
+            head.next.prev = null;
         }
         head = head.next;
-        temp.next= null;
+        temp.next = null;
         length--;
         return temp;
     }
 
     public ListNode deleteLast() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
         }
         ListNode temp = tail;
-        if(head == tail) {
+        if (head == tail) {
             head = null;
         } else {
             tail.prev.next = null;
@@ -115,7 +116,7 @@ public class DoublyLinked {
         dll.insertEnd(5);
 
         dll.displayForward();
-        
+
         dll.deleteLast();
         dll.deleteFirst();
 
