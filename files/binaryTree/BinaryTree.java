@@ -9,11 +9,17 @@ public class BinaryTree {
 
     public static void main(String[] args) {
         sc = new Scanner(System.in);
-        TreeNode root = createTree();
-        System.out.println(inorderTraversal(root));
-        System.out.println(preorderTraversal(root));
-        System.out.println(postorderTraversal(root));
-        System.out.println(invertBinaryTree(root));
+//        TreeNode root = createTree();
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(2);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(3);
+        root.right.right = new TreeNode(9);
+        System.out.println(widthOfBinaryTree(root));
+//        System.out.println(preorderTraversal(root));
+//        System.out.println(postorderTraversal(root));
+//        System.out.println(invertBinaryTree(root));
     }
 
     static List<Integer> ans = new ArrayList<>();
@@ -160,5 +166,22 @@ public class BinaryTree {
         if (p.left == null && p.right == null)
             return targetSum == p.val;
         return pathSum(p.left, targetSum - p.val) || pathSum(p.right, targetSum - p.val);
+    }
+    static int widthOfBinaryTree(TreeNode root) {
+        int ans = Integer.MIN_VALUE;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
+            int lvlSize = queue.size();
+            ans = Math.max(ans, lvlSize);
+            for(int i = 0; i < lvlSize; i++) {
+                TreeNode t = queue.poll();
+                if(t != null) {
+                    queue.offer(t.left);
+                    queue.offer(t.right);
+                }
+            }
+        }
+        return ans;
     }
 }

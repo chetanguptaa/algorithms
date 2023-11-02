@@ -6,11 +6,9 @@ public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-
     TreeNode(int val) {
         this.val = val;
     }
-
     static TreeNode createTree() {
         TreeNode root = null;
         System.out.println("Enter the data: ");
@@ -22,7 +20,6 @@ public class TreeNode {
         root.left = createTree();
         System.out.println("Enter right for: " + data);
         root.right = createTree();
-
         return root;
     }
 }

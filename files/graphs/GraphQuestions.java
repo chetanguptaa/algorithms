@@ -31,7 +31,7 @@ public class GraphQuestions {
         map2.put(2, Arrays.asList(1));
         // System.out.println(componentsCount(map2, 1));
         // System.out.println(largestComponent(map2));
-        // System.out.println(islandCount(graph));
+        System.out.println(islandCount(graph));
     }
 
     static void depthFirst(HashMap<Character, List<Character>> graph, Character source) {
@@ -157,11 +157,7 @@ public class GraphQuestions {
 
     static int largestComponent(Map<Integer, List<Integer>> graph) {
         int longest = 0;
-        for (int node : graph.keySet()) {
-            int size = exploreSize(graph, node);
-            if (size > longest)
-                longest = size;
-        }
+        for (int node : graph.keySet()) Math.max(longest, exploreSize(graph, node));
         return longest;
     }
 
@@ -200,7 +196,7 @@ public class GraphQuestions {
             List<Integer> neighbors = graph.getOrDefault(node, new ArrayList<>());
             for (int neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
-                    queue.add(new int[] { neighbor, distance + 1 });
+                    queue.offer(new int[] { neighbor, distance + 1 });
                     visited.add(neighbor);
                 }
             }
@@ -213,7 +209,7 @@ public class GraphQuestions {
         int count = 0;
         for (int r = 0; r < edges.length; r++) {
             for (int c = 0; c < edges[0].length; c++) {
-                if (explore(edges, r, c, visited) == true)
+                if (explore(edges, r, c, visited))
                     count++;
             }
         }
@@ -227,7 +223,7 @@ public class GraphQuestions {
             return false;
         if (edges[r][c] == 'W')
             return false;
-        String pos = String.valueOf(r + ',' + c);
+        String pos = String.valueOf( r + ',' + c);
         if (visited.contains(pos))
             return false;
         visited.add(pos);
@@ -243,9 +239,7 @@ public class GraphQuestions {
         int size = Integer.MAX_VALUE;
         for (int r = 0; r < edges.length; r++) {
             for (int c = 0; c < edges[0].length; c++) {
-                int tempSize = sizeExplorer(edges, r, c, visited);
-                if (tempSize < size)
-                    size = tempSize;
+                size = Math.min(size, sizeExplorer(edges, r, c, visited));
             }
         }
         return size;
@@ -268,5 +262,52 @@ public class GraphQuestions {
         size += sizeExplorer(edges, r, c - 1, visited);
         return size;
     }
-
+    public static int[] topologicalSort(int V, List<List<Integer>> adjList) {
+        boolean[] visited = new boolean[V];
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i < V; i++) {
+            if(!visited[i]) dfs(adjList, i, visited, stack);
+        }
+        int[] ans = new int[V];
+        int idx = 0;
+        while(!stack.isEmpty()) {
+            ans[idx++] = stack.pop();
+        }
+        return ans;
+    }
+    private static void dfs(List<List<Integer>> adjList, int i, boolean[] visited, Stack<Integer> stack) {
+        visited[i] = true;
+        for(int neighbor: adjList.get(i)) {
+            if(!visited[neighbor]) dfs(adjList, neighbor, visited, stack);
+        }
+        stack.push(i);
+    }
+    public static int[] topologicalSortUsingBFS(int V, List<List<Integer>> adjList) {
+        // Also Known as the Kahn's Algorithm
+        int[] inDeg = new int[V];
+        for(List<Integer> list: adjList) for(int i: list) inDeg[i]++;
+        List<Integer> ansList = new ArrayList<>();
+        bfs(adjList, V, 0, ansList, inDeg);
+        int[] ans = new int[V];
+        int idx = 0;
+        for(int edge: ansList) {
+            ans[idx++] = edge;
+        }
+        return ans;
+    }
+    private static void bfs(List<List<Integer>> adjList, int V, int v, List<Integer> ans, int[] inDeg) {
+        Queue<Integer> queue = new ArrayDeque<>();
+        for(int i = 0; i < V; i++) {
+            if(inDeg[i] == 0) queue.offer(i);
+        }
+        while(!queue.isEmpty()) {
+            int curr = queue.poll();
+            ans.add(curr);
+            for(int neighbor: adjList.get(curr)) {
+                if(--inDeg[neighbor] == 0) {
+                    queue.offer(neighbor);
+                }
+            }
+        }
+    }
 }
