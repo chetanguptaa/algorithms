@@ -7,7 +7,6 @@ public class Mini {
                 minimum = numbers[i];
             }
         }
-        System.out.println(minimum);
     }
 
     public static void main(String[] args) {

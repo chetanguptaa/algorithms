@@ -310,4 +310,57 @@ public class GraphQuestions {
             }
         }
     }
+    public static boolean cycleDetectionInUndirected(int V, List<List<Integer>> adjList) {
+        boolean vis[] = new boolean[V];
+        for(int i = 0; i < V; i++) {
+            if(!vis[i]) {
+                if(dfsCycleDetection(i, adjList, vis, -1)) return true;
+            }
+        }
+        return false;
+    }
+    private static boolean dfsCycleDetection(int i, List<List<Integer>> adjList, boolean[] vis, int parent) {
+        vis[i] = true;
+        for(int neighbor: adjList.get(i)) {
+            if(!vis[neighbor]) {
+                if(dfsCycleDetection(neighbor, adjList, vis, parent)) return true;
+            } else if(parent != neighbor) return true;
+        }
+        return false;
+    }
+    public static boolean cycleDetectionInDirected(int V, List<List<Integer>> adjList) {
+        boolean vis[] = new boolean[V];
+        return false;
+    }
+    public static class Pair implements Comparable<Pair> {
+        int v;
+        int wt;
+        Pair(int v, int wt) {
+            this.v = v;
+            this.wt = wt;
+        }
+        public int compareTo(Pair that) {
+            return this.wt - that.wt;
+        }
+    }
+    public static int spanningTreePrimsAlgo(int v, List<List<List<Integer>>> adjList) {
+        boolean[] vis = new boolean[v];
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        pq.add(new Pair(0, 0));
+        int ans = 0;
+        while(pq.size() != 0) {
+            Pair curr = pq.remove();
+            int u = curr.v;
+            if(vis[u]) continue;
+            ans += curr.wt;
+            vis[u] = true;
+            List<List<Integer>> neighbors = adjList.get(u);
+            for(List<Integer> list: neighbors) {
+                int vertex = list.get(0);
+                int wt = list.get(1);
+                if(!vis[vertex]) pq.add(new Pair(vertex, wt));
+            }
+        }
+        return ans;
+    }
 }
