@@ -5,7 +5,7 @@ public class BinarySearchTree {
    private TreeNode root;
 
    private class TreeNode {
-      private int data; // Generic type
+      private final int data; // Generic type
       private TreeNode left;
       private TreeNode right;
 

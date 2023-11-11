@@ -45,7 +45,7 @@ public class DynamicProgrammingTab {
         Arrays.fill(table, false);
         table[0] = true;
         for(int i = 0; i <= targetSum; i++) {
-            if( table[i] == true )
+            if(table[i])
                 for(int num: numbers)
                     if(i + num <= targetSum) table[i + num] = true;
         }
@@ -88,7 +88,7 @@ public class DynamicProgrammingTab {
         Arrays.fill(table, false);
         table[0] = true;
         for(int i = 0; i < target.length(); i++) {
-            if(table[i] == true) {
+            if(table[i]) {
                 for(String word: wordBank) {
                     if(target.substring(i, i + word.length()) == word) {
                         table[i + word.length()] = true;
@@ -104,7 +104,7 @@ public class DynamicProgrammingTab {
         table[0] = 1;
         for(int i = 0; i < target.length(); i++) {
             for(String word: wordBank) {
-                if(i + word.length() <= target.length() && target.substring(i, i + word.length()).equals(word)) {
+                if(i + word.length() <= target.length() && target.startsWith(word, i)) {
                     table[i + word.length()] += table[i];
                 }
             }
@@ -116,7 +116,7 @@ public class DynamicProgrammingTab {
         Arrays.fill(table, new ArrayList<>());
         for (int i = 0; i <= target.length(); i++) {
             for (String word : wordBank) {
-                if (i + word.length() <= target.length() && target.substring(i, i + word.length()).equals(word)) {
+                if (i + word.length() <= target.length() && target.startsWith(word, i)) {
                     List<List<String>> newCombinations = new ArrayList<>();
                     for (List<String> subArray : table[i]) {
                         List<String> combination = new ArrayList<>(subArray);

@@ -19,9 +19,7 @@ public class MergeSort {
     }
 
     private void merge(int[] arr, int[] temp, int low, int mid, int high) {
-        for (int i = low; i <= high; i++) {
-            temp[i] = arr[i];
-        }
+        if (high + 1 - low >= 0) System.arraycopy(arr, low, temp, low, high + 1 - low);
         int i = low;
         int j = mid + 1;
         int k = low;

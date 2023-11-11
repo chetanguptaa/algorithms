@@ -9,7 +9,7 @@ public class DoublyLinked {
     private int length;
 
     private class ListNode {
-        private int data; // can be any Generic type
+        private final int data; // can be any Generic type
         private ListNode next;
         private ListNode prev;
 

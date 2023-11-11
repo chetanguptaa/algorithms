@@ -19,7 +19,7 @@ public class LiskovExampleCorrection {
         private double getDiscount() {
             return 0;
         }
-    };
+    }
 
     public static class BeverageItem extends MenuItem {
         public BeverageItem(int price, String name, String description) {
@@ -34,7 +34,7 @@ public class LiskovExampleCorrection {
             int discountPercent = 10;
             return discountPercent * 0.01 * this.price;
         }
-    };
+    }
 
     public static void printItemPrice(MenuItem item) {
         if (item instanceof BeverageItem)

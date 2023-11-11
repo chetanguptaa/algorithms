@@ -1,6 +1,7 @@
 package backtracking;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Combinations {
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class Combinations {
         backtrack(list, new ArrayList<>(), n, k, 1);
         return list;
     }
-    static void backtrack(List<List<Integer>> list, List<Integer> tempList, int n, int k, int start) {
+    private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int n, int k, int start) {
         if(tempList.size() == k) list.add(new ArrayList<>(tempList));
         else {
             for(int i = start; i <= n; i++) {

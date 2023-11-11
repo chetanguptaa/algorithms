@@ -6,8 +6,8 @@ import java.util.Stack;
 
 public class AdjListGraph {
 
-    private LinkedList<Integer>[] adj;
-    private int V;
+    private final LinkedList<Integer>[] adj;
+    private final int V;
     private int E;
 
     public AdjListGraph(int node) {

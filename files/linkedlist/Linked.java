@@ -6,7 +6,7 @@ public class Linked {
 
     public static class ListNode {
         public ListNode Linked;
-        private int data; // Generic type
+        private final int data; // Generic type
         private ListNode next;
 
         public ListNode(int data) {

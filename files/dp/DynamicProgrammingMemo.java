@@ -69,7 +69,7 @@ public class DynamicProgrammingMemo {
             return false;
         for (int num : numbers) {
             int rem = targetSum - num;
-            if (canSumDp(rem, numbers, memo) == true) {
+            if (canSumDp(rem, numbers, memo)) {
                 memo.put(targetSum, true);
                 return true;
             }

@@ -2,7 +2,7 @@ package stack;
 
 public class StackArray {
     private int top;
-    private int[] arr;
+    private final int[] arr;
 
     public StackArray(int capacity) {
         top = -1;

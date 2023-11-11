@@ -18,7 +18,8 @@ public class CombinationSum {
     }
 
     private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] candidates, int remain, int start) {
-        if (remain < 0) return;
+        if (remain < 0) {
+        }
         else if (remain == 0) list.add(new ArrayList<>(tempList));
         else {
             for (int i = start; i < candidates.length; i++) {

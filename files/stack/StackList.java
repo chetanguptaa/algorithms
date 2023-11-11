@@ -7,7 +7,7 @@ public class StackList {
     private int length;
 
     private class ListNode {
-        private int data;
+        private final int data;
         private ListNode next;
 
         public ListNode(int data) {

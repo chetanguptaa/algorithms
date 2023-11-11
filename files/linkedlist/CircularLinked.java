@@ -9,7 +9,7 @@ public class CircularLinked {
 
     private class ListNode {
         private ListNode next;
-        private int data;
+        private final int data;
 
         public ListNode(int data) {
             this.data = data;

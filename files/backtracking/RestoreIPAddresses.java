@@ -35,7 +35,6 @@ public class RestoreIPAddresses {
     private static boolean isValidIP(String ip){
         if(ip.length() > 3 || ip.length() == 0) return false;
         if(ip.length() > 1 && ip.charAt(0) == '0') return false;
-        if(ip.length() > 0 && Integer.parseInt(ip) > 255) return false;
-        return true;
+        return ip.length() <= 0 || Integer.parseInt(ip) <= 255;
     }
 }

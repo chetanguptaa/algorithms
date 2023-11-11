@@ -7,9 +7,9 @@ public class GraphQuestions {
     public static void main(String[] args) {
         HashMap<Character, List<Character>> map = new HashMap<>();
         map.put('a', Arrays.asList('b', 'c'));
-        map.put('b', Arrays.asList('d'));
-        map.put('c', Arrays.asList('e'));
-        map.put('d', Arrays.asList('f'));
+        map.put('b', List.of('d'));
+        map.put('c', List.of('e'));
+        map.put('d', List.of('f'));
         map.put('e', new ArrayList<>());
         map.put('f', new ArrayList<>());
         char[][] graph = new char[][] { { 'i', 'j' }, { 'k', 'i' }, { 'm', 'k' }, { 'k', 'l' }, { 'o', 'n' } };
@@ -21,14 +21,14 @@ public class GraphQuestions {
         // System.out.println(toAdjList(graph));
         // System.out.println(undirectedPath(graph, 'o', 'n'));
         HashMap<Integer, List<Integer>> map2 = new HashMap<>();
-        map2.put(3, Arrays.asList());
-        map2.put(4, Arrays.asList(6));
+        map2.put(3, List.of());
+        map2.put(4, List.of(6));
         map2.put(6, Arrays.asList(4, 5, 7, 8));
-        map2.put(8, Arrays.asList(6));
-        map2.put(7, Arrays.asList(6));
-        map2.put(5, Arrays.asList(6));
-        map2.put(1, Arrays.asList(2));
-        map2.put(2, Arrays.asList(1));
+        map2.put(8, List.of(6));
+        map2.put(7, List.of(6));
+        map2.put(5, List.of(6));
+        map2.put(1, List.of(2));
+        map2.put(2, List.of(1));
         // System.out.println(componentsCount(map2, 1));
         // System.out.println(largestComponent(map2));
         System.out.println(islandCount(graph));
@@ -311,7 +311,7 @@ public class GraphQuestions {
         }
     }
     public static boolean cycleDetectionInUndirected(int V, List<List<Integer>> adjList) {
-        boolean vis[] = new boolean[V];
+        boolean[] vis = new boolean[V];
         for(int i = 0; i < V; i++) {
             if(!vis[i]) {
                 if(dfsCycleDetection(i, adjList, vis, -1)) return true;
@@ -329,7 +329,7 @@ public class GraphQuestions {
         return false;
     }
     public static boolean cycleDetectionInDirected(int V, List<List<Integer>> adjList) {
-        boolean vis[] = new boolean[V];
+        boolean[] vis = new boolean[V];
         return false;
     }
     public static class Pair implements Comparable<Pair> {

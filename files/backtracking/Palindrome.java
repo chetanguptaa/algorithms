@@ -21,10 +21,9 @@ public class Palindrome {
             String temp = s.substring(0, i);
             if(!isPalindrome(temp)) continue;
             tempList.add(temp);
-            backtrack(list, tempList, s.substring(i, s.length()));
+            backtrack(list, tempList, s.substring(i));
             tempList.remove(tempList.size() - 1);
         }
-        return;
     }
     private static boolean isPalindrome(String s) {
         int i = 0, j = s.length() - 1;

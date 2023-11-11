@@ -2,9 +2,9 @@ package graphs;
 
 public class AdjMatrixGraph {
 
-    private int V;
+    private final int V;
     private int E;
-    private int[][] adjMatrix;
+    private final int[][] adjMatrix;
 
     public AdjMatrixGraph(int nodes) {
         this.V = nodes;
