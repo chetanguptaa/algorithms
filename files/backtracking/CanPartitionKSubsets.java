@@ -10,12 +10,20 @@ public class CanPartitionKSubsets {
         int sum = 0;
         for(int num: nums) sum += num;
         if(k <= 0 || sum % k != 0) return false;
-        int[] visited = new int[nums.length];
-        return canPartition(nums, visited, 0, k, 0, 0, sum/k);
+        boolean[] visited = new boolean[nums.length];
+        Arrays.sort(nums);
+        return canPartition(nums, visited, 0, k, 0, 0, sum / k);
     }
-    private static boolean canPartition(int[] nums, int[] visited, int startIndex, int k, int currSum, int currNum, int target) {
+    private static boolean canPartition(int[] nums, boolean[] visited, int startIndex, int k, int currSum, int currNum, int target) {
         if(k == 1) return true;
-        if(currSum == target && currNum > 0) return true;
+        if(currSum == target && currNum > 0) return canPartition(nums, visited, 0, k - 1, 0, 0, target);
+        for(int i = startIndex; i < nums.length; i++){
+            if(visited[i] == false){
+                visited[i] = true;
+                if(canPartition(nums, visited, i + 1, k, currSum + nums[i], currNum++, target)) return true;
+                visited[i] = false;
+            }
+        }
         return false;
     }
 }
