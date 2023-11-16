@@ -1,7 +1,6 @@
 package graphs;
 
 import java.util.*;
-import java.util.Queue;
 
 public class GraphQuestions {
     public static void main(String[] args) {
@@ -122,8 +121,7 @@ public class GraphQuestions {
         return hasPath(graph, nodeA, nodeB, new HashSet<>());
     }
 
-    static boolean hasPath(Map<Character, List<Character>> graph, char source, char destination,
-            Set<Character> visited) {
+    static boolean hasPath(Map<Character, List<Character>> graph, char source, char destination, Set<Character> visited) {
         if (source == destination)
             return true;
         if (visited.contains(source))
