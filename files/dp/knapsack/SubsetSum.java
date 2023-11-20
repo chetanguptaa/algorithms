@@ -6,10 +6,10 @@ public class SubsetSum {
     }
 
     public static boolean subsetSum(int[] arr, int sum) {
-        int n = arr.length;
+        int n = arr.length - 1;
         boolean[][] matrix = new boolean[n + 1][sum + 1];
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 if (j == 0)
                     matrix[i][j] = true;
                 else
