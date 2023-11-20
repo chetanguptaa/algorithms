@@ -1,11 +1,26 @@
 package dp.knapsack;
 
-public class SubsetSum {
+public class MinimumSubsetDiff {
     public static void main(String[] args) {
-        System.out.println(subsetSum(new int[] { 2, 3, 7, 8, 10 }, 11, 5));
+        System.out.println(minSubsetDiff(new int[] { 1, 2, 5 }, 3));
     }
 
-    public static boolean subsetSum(int[] arr, int sum, int n) {
+    public static int minSubsetDiff(int[] nums, int n) {
+        int sum = 0;
+        for (int num : nums)
+            sum += num;
+        boolean[] range = subsetSum(nums, sum, n);
+        int ans = Integer.MAX_VALUE;
+        for (int i = sum / 2 - 1; i >= 0; i--) {
+            if (range[i]) {
+                ans = Math.min(ans, sum - i);
+                break;
+            }
+        }
+        return ans;
+    }
+
+    private static boolean[] subsetSum(int[] arr, int sum, int n) {
         boolean[][] matrix = new boolean[n + 1][sum + 1];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -24,6 +39,6 @@ public class SubsetSum {
                 }
             }
         }
-        return matrix[n][sum];
+        return matrix[n];
     }
 }
