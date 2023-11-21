@@ -17,10 +17,8 @@ public class GreedyAlgorithms {
     static int bulbCost(boolean[] bulbs) {
         int cost = 0;
         for (boolean bulb : bulbs) {
-            if (cost % 2 != 0)
-                bulb = !bulb;
-            if (bulb)
-                continue;
+            if (cost % 2 != 0) bulb = !bulb;
+            if (bulb) continue;
             else
                 cost += 1;
         }

@@ -25,10 +25,8 @@ public class DynamicProgrammingMemo {
     }
 
     static int fibDp(int n, Map<Integer, Integer> memo) {
-        if (memo.containsKey(n))
-            return memo.get(n);
-        if (n <= 2)
-            return 1;
+        if (memo.containsKey(n)) return memo.get(n);
+        if (n <= 2) return 1;
         memo.put(n, fibDp(n - 1, memo) + fibDp(n - 2, memo));
         return memo.get(n);
     }

@@ -18,8 +18,7 @@ public class DynamicProgrammingTab {
 
     static int fib(int n) {
         int[] table = new int[n + 1];
-        for (int num : table)
-            num = 0;
+        for (int num : table) num = 0;
         table[1] = 1;
         for (int i = 0; i < n; i++) {
             if (i == n - 1)
