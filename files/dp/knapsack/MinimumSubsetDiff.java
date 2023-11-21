@@ -7,15 +7,11 @@ public class MinimumSubsetDiff {
 
     public static int minSubsetDiff(int[] nums, int n) {
         int sum = 0;
-        for (int num : nums)
-            sum += num;
+        for (int num : nums) sum += num;
         boolean[] range = subsetSum(nums, sum, n);
         int ans = Integer.MAX_VALUE;
         for (int i = sum / 2 - 1; i >= 0; i--) {
-            if (range[i]) {
-                ans = Math.min(ans, sum - i);
-                break;
-            }
+            if (range[i]) ans = Math.min(ans, sum - 2 * i);
         }
         return ans;
     }
@@ -24,19 +20,13 @@ public class MinimumSubsetDiff {
         boolean[][] matrix = new boolean[n + 1][sum + 1];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                if (j == 0)
-                    matrix[i][j] = true;
-                else
-                    matrix[i][j] = false;
+                matrix[i][j] = j == 0;
             }
         }
         for (int i = 1; i < n + 1; i++) {
             for (int j = 1; j < sum + 1; j++) {
-                if (arr[i - 1] <= j) {
-                    matrix[i][j] = matrix[i - 1][j - arr[i - 1]] || matrix[i - 1][j];
-                } else {
-                    matrix[i][j] = matrix[i - 1][j];
-                }
+                if (arr[i - 1] <= j) matrix[i][j] = matrix[i - 1][j - arr[i - 1]] || matrix[i - 1][j];
+                else matrix[i][j] = matrix[i - 1][j];
             }
         }
         return matrix[n];
