@@ -11,7 +11,10 @@ public class MinimumSubsetDiff {
         boolean[] range = subsetSum(nums, sum, n);
         int ans = Integer.MAX_VALUE;
         for (int i = sum / 2 - 1; i >= 0; i--) {
-            if (range[i]) ans = Math.min(ans, sum - 2 * i);
+            if (range[i]) {
+                ans = Math.min(ans, sum - 2 * i);
+                break;
+            }
         }
         return ans;
     }

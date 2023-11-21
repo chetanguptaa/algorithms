@@ -7,10 +7,8 @@ public class EqualSumPartition {
 
     public static boolean equalSumPartition(int[] nums, int n) {
         int sum = 0;
-        for (int num : nums)
-            sum += num;
-        if (sum % 2 != 0)
-            return false;
+        for (int num : nums) sum += num;
+        if (sum % 2 != 0) return false;
         return subsetSum(nums, sum / 2, n);
     }
 
@@ -18,10 +16,7 @@ public class EqualSumPartition {
         boolean[][] matrix = new boolean[n + 1][sum + 1];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                if (j == 0)
-                    matrix[i][j] = true;
-                else
-                    matrix[i][j] = false;
+                matrix[i][j] = j == 0;
             }
         }
         for (int i = 1; i < n + 1; i++) {
