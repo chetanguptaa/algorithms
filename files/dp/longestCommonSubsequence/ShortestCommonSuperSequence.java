@@ -1,5 +1,7 @@
 package dp.longestCommonSubsequence;
 
+// Basically to find the shortest string for which string a and b are a subsequence
+
 public class ShortestCommonSuperSequence {
     public static void main(String[] args) {
         System.out.println(scs("geek", "eek", 4, 3));
