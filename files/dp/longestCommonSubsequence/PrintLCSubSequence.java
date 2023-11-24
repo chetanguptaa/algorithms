@@ -18,7 +18,7 @@ public class PrintLCSubSequence {
         }
         int i = n, j = m;
         StringBuilder sb = new StringBuilder();
-        while(i > 0 || j > 0) {
+        while(i > 0 && j > 0) {
             if(a.charAt(i - 1) == b.charAt(j - 1)) {
                 sb.append(a.charAt(i - 1));
                 i--;
