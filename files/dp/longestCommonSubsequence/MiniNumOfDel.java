@@ -26,9 +26,7 @@ public class MiniNumOfDel {
     }
     private static String rev(String a) {
         StringBuilder sb = new StringBuilder();
-        for(int i = a.length() - 1; i >= 0; i--) {
-            sb.append(a.charAt(i));
-        }
+        for(int i = a.length() - 1; i >= 0; i--) sb.append(a.charAt(i));
         return sb.toString();
     }
 }
